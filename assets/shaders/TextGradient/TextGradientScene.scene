@@ -276,7 +276,7 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 883.2506110020261,
+      "width": 522.1871032172792,
       "height": 125.99999999999999
     },
     "_anchorPoint": {
@@ -309,7 +309,7 @@
       "b": 255,
       "a": 255
     },
-    "_string": "KUCHUBOO",
+    "_string": "Testing",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 156.38888888888889,
@@ -352,7 +352,7 @@
     "_id": "87pYxV1htEdLKFYQ6kLZ8J"
   },
   {
-    "__type__": "28fc9XcmglHg5gExaoBvUE9",
+    "__type__": "687b3gVuxdHXJaoOfav/Oym",
     "_name": "",
     "_objFlags": 0,
     "__editorExtras__": {},
@@ -365,7 +365,7 @@
       "__uuid__": "66b56744-765e-4321-8793-cbc5eae1ebaf",
       "__expectedType__": "cc.Material"
     },
-    "_id": "00FerZE4FN0anea9UKUAoc"
+    "_id": "8bsvtT9BVCj4Iav31k7aea"
   },
   {
     "__type__": "cc.Node",

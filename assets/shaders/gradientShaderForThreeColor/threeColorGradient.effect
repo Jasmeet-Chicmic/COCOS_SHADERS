@@ -66,7 +66,9 @@ CCProgram sprite-vs %{
 
 CCProgram sprite-fs %{
   precision highp float;
+
   #include <builtin/internal/embedded-alpha>
+
   #include <builtin/internal/alpha-test>
 
   in vec4 color;
@@ -76,9 +78,11 @@ CCProgram sprite-fs %{
     vec4 color2;
     vec4 color3;
     float utime;
+    bool animate;
   };   
 
   in vec2 uv0;
+
   #pragma builtin(local)
   layout(set = 2, binding = 11) uniform sampler2D cc_spriteTexture;
 
@@ -90,12 +94,14 @@ CCProgram sprite-fs %{
     vec4 o = vec4(1, 1, 1, 1); 
     o *= CCSampleWithAlphaSeparated(cc_spriteTexture, uv0); 
 
-   
-    o.rgb *= mix(mix(color1.rgb,color2.rgb,0.5), mix(color2.rgb, mix(color3.rgb,color1.rgb,0.4), sin((1.4-uv0.x)+utime)), 0.4+sin((0.8-uv0.x)+utime));
 
-    o *= color;
-
-    ALPHA_TEST(o);
-    return o;
+#if ANIMATE
+  o.rgb *= mix(mix(color1.rgb,color2.rgb,0.5), mix(color2.rgb, mix(color3.rgb,color1.rgb,0.4), sin((1.4-uv0.x)+utime)), 0.4+sin((0.8-uv0.x)+utime));
+#else
+  o.rgb *= mix(color1.rgb, mix(color2.rgb, color3.rgb, smoothstep(0.0, colorRadio * 2.0, uv0.x)), smoothstep(0.0, colorRadio * 1.0, uv0.x));
+#endif
+o *= color;
+ALPHA_TEST(o);
+return o;
   }
 }%
